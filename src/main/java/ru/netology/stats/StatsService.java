@@ -38,8 +38,9 @@ public class StatsService {
 
     public static int lessThanAverage(int[] sellsData) {//количество месяцев, в которых продажи были ниже среднего
         int lessAverageDays = 0;
+        int average = averageValue(sellsData);
         for (int i = 0; i < sellsData.length; i++) {
-            if (sellsData[i] < averageValue(sellsData)) {
+            if (sellsData[i] < average) {
                 lessAverageDays++;
             }
         }
@@ -48,8 +49,9 @@ public class StatsService {
 
     public static int moreThanAverage(int[] sellsData) {//количество месяцев, в которых продажи были выше среднего
         int moreAverageDays = 0;
+        int average = averageValue(sellsData);
         for (int i = 0; i < sellsData.length; i++) {
-            if (sellsData[i] > averageValue(sellsData)) {
+            if (sellsData[i] > average) {
                 moreAverageDays++;
             }
         }
