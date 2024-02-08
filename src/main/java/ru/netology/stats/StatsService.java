@@ -11,14 +11,8 @@ public class StatsService {
     }
 
     public static int averageValue(int[] sellsData) {//Средняя сумма продаж в месяц
-        int average = 0;
-        if (sellsData.length > 0) {
-            int sum = 0;
-            for (int i = 0; i < sellsData.length; i++) {
-                sum += sellsData[i];
-            }
-            average = sum / sellsData.length;
-        }
+        int sumForAverage = allSells(sellsData);
+        int average = sumForAverage / sellsData.length;
         return average;
     }
 
@@ -40,22 +34,12 @@ public class StatsService {
             }
         }
         return minMonth + 1;
-
     }
 
     public static int lessThanAverage(int[] sellsData) {//количество месяцев, в которых продажи были ниже среднего
-        int average = 0;
-        if (sellsData.length > 0) {
-            int sum = 0;
-            for (int i = 0; i < sellsData.length; i++) {
-                sum += sellsData[i];
-            }
-            average = sum / sellsData.length;
-
-        }
         int lessAverageDays = 0;
         for (int i = 0; i < sellsData.length; i++) {
-            if (sellsData[i] < average) {
+            if (sellsData[i] < averageValue(sellsData)) {
                 lessAverageDays++;
             }
         }
@@ -63,23 +47,12 @@ public class StatsService {
     }
 
     public static int moreThanAverage(int[] sellsData) {//количество месяцев, в которых продажи были выше среднего
-        int average = 0;
-        if (sellsData.length > 0) {
-            int sum = 0;
-            for (int i = 0; i < sellsData.length; i++) {
-                sum += sellsData[i];
-            }
-            average = sum / sellsData.length;
-
-        }
         int moreAverageDays = 0;
         for (int i = 0; i < sellsData.length; i++) {
-            if (sellsData[i] > average) {
+            if (sellsData[i] > averageValue(sellsData)) {
                 moreAverageDays++;
             }
         }
         return moreAverageDays;
     }
-
-
 }
